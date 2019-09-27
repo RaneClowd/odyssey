@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework import permissions, viewsets
+from rest_framework.response import Response
 
-# Create your views here.
+from .models import Trail
+from .serializers import TrailSerializer
+
+class TrailViewSet(viewsets.ModelViewSet):
+    queryset = Trail.objects.all()
+    serializer_class = TrailSerializer
+
+    permission_classes = [permissions.AllowAny]
